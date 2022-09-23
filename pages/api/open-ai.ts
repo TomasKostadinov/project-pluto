@@ -8,16 +8,16 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-type Data = {
-    name: string
-}
-
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<Data>
+    res: NextApiResponse
 ) {
-    const {job, industry, companyName, name, message} = req.body;
-
+    const {job, industry, companyName, message} = req.body;
+    if (!job || !industry || !companyName || !message) {
+        return res.status(400).json({
+            error: "Missing data"
+        });
+    }
 
     const response = await openai.createCompletion({
         model: "text-davinci-002",
