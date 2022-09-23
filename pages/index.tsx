@@ -11,7 +11,7 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/x.svg"/>
                 <meta property="og:type" content="website"/>
                 <meta property="og:url" content="https://project-pluto.vaerk.digital/"/>
-                <meta property="og:title" content="Home - vaerk"/>
+                <meta property="og:title" content="AI Created Vision Statement for 2035 - Vaerk Project Pluto"/>
                 <meta property="og:description" content=""/>
                 <meta property="og:image" content="https://project-pluto.vaerk.digital/bg.jpg"/>
                 <meta property="twitter:card" content="summary_large_image"/>
