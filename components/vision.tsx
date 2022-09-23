@@ -62,7 +62,7 @@ export default function Vision() {
                                 <div>
                                     <label htmlFor="companyName"
                                            className="block text-sm font-medium text-gray-700 pb-2">
-                                        My Company Name
+                                        Company Name
                                     </label>
                                     <input
                                         type="text"
@@ -70,19 +70,19 @@ export default function Vision() {
                                         id="companyName"
                                         autoComplete="name"
                                         className="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                        placeholder="My Company Name"
+                                        placeholder="Future Lab vaerk"
                                     />
                                 </div>
                                 <div>
                                     <label htmlFor="industry" className="block text-sm font-medium text-gray-700 pb-2">
-                                        My Industry
+                                        Industry
                                     </label>
                                     <input
                                         id="industry"
                                         name="industry"
                                         type="text"
                                         className="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                        placeholder="My Industry"
+                                        placeholder="future research and consulting"
                                     />
                                 </div>
                                 <div>
@@ -94,7 +94,7 @@ export default function Vision() {
                                         name="job"
                                         id="job"
                                         className="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                        placeholder="What we currently do"
+                                        placeholder="Accompany organisations towards a sustainable future"
                                     />
                                 </div>
                                 <div>
@@ -106,7 +106,7 @@ export default function Vision() {
                                         name="message"
                                         rows={4}
                                         className="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                        placeholder="These are our main challenges"
+                                        placeholder="Explore what sustainability really means"
                                         defaultValue={''}
                                     />
                                 </div>
