@@ -51,7 +51,8 @@ export default function Vision() {
                             Create your vision for 2035
                         </h2>
                         <p className="mt-5 text-xl text-gray-500">
-                            Sometimes, for us humans, it is hard to imagine the future. This AI helps you to!
+                            For us humans sometimes it is hard to imagine the future.<br/>
+                            This ai provides you an inspiring vision tailored to your company.
                         </p>
                     </div>
 

@@ -115,7 +115,11 @@ export default function VisionModal(props: { text: string, initialPayload: any, 
                                                 className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
                                                 <button
                                                     type="submit"
-                                                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
+                                                    className="inline-flex w-full justify-center rounded-md border border-transparent
+                                                     inline-flex items-center rounded-md border-0 border-transparent
+                                                     bg-gradient-to-r from-[#f58f75] to-[#5b92a6] transition duration-200
+                                                     px-4 py-2 text-base font-medium text-white shadow-sm hover:opacity-75
+                                                     focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
                                                 >
                                                     Send
                                                 </button>
