@@ -2,17 +2,20 @@ import {Fragment, useRef, useState} from 'react'
 import {Dialog, Transition} from '@headlessui/react'
 import LoadingModal from "./loading-modal";
 
-export default function VisionModal(props: { text: string, open: boolean, setOpen: any }) {
+export default function VisionModal(props: { text: string, initialPayload: any, open: boolean, setOpen: any }) {
     const cancelButtonRef = useRef(null);
     const [loadingModalOpen, setLoadingModalOpen] = useState<boolean>(false);
     const submitEmail = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setLoadingModalOpen(true);
-        const form = new FormData(event.target as any)
+        const form = new FormData(event.target as any);
+        console.log(props.initialPayload);
         const res = await fetch('/api/save-entries', {
             body: JSON.stringify({
                 vision: props.text,
                 email: form.get('email'),
+                insights: form.get('insights'),
+                ...props.initialPayload,
             }),
             headers: {
                 'Content-Type': 'application/json',
@@ -91,23 +94,39 @@ export default function VisionModal(props: { text: string, open: boolean, setOpe
                                                     />
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div
-                                            className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
-                                            <button
-                                                type="submit"
-                                                className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
-                                            >
-                                                Send
-                                            </button>
-                                            <button
-                                                type="button"
-                                                className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"
-                                                onClick={() => props.setOpen(false)}
-                                                ref={cancelButtonRef}
-                                            >
-                                                Cancel
-                                            </button>
+                                            <div className="relative flex items-start py-4">
+                                                <div className="flex h-5 items-center">
+                                                    <input
+                                                        id="insights"
+                                                        aria-describedby="offers-description"
+                                                        name="insights"
+                                                        type="checkbox"
+                                                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                                    />
+                                                </div>
+                                                <div className="ml-3 text-sm">
+                                                    <label htmlFor="insights" className="font-medium text-gray-700">
+                                                        Get more insights about vaerk
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div
+                                                className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
+                                                <button
+                                                    type="submit"
+                                                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
+                                                >
+                                                    Send
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"
+                                                    onClick={() => props.setOpen(false)}
+                                                    ref={cancelButtonRef}
+                                                >
+                                                    Cancel
+                                                </button>
+                                            </div>
                                         </div>
                                     </Dialog.Panel>
                                 </Transition.Child>
@@ -118,5 +137,5 @@ export default function VisionModal(props: { text: string, open: boolean, setOpe
             </Transition.Root>
             <LoadingModal open={loadingModalOpen} setOpen={setLoadingModalOpen}></LoadingModal>
         </>
-    )
+)
 }

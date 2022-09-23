@@ -8,6 +8,7 @@ export default function Vision() {
     const [visionModalOpen, setVisionModalOpen] = useState<boolean>(false);
     const [loadingModalOpen, setLoadingModalOpen] = useState<boolean>(false);
     const [vision, setVision] = useState<string>("");
+    const [initialPayload, setInitialPayload] = useState<{}>({});
 
     const submitContact = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -15,7 +16,7 @@ export default function Vision() {
         const form = new FormData(event.target as any)
         const res = await fetch('/api/open-ai', {
             body: JSON.stringify({
-                'company-name': form.get('company-name'),
+                companyName: form.get('companyName'),
                 industry: form.get('industry'),
                 job: form.get('job'),
                 message: form.get('message'),
@@ -31,6 +32,7 @@ export default function Vision() {
             const answer = result.choices[0].text;
             setVisionModalOpen(true);
             setVision(answer);
+            setInitialPayload(result.initialPayload)
         } else {
             alert("An error has occurred, please try again later")
         }
@@ -56,14 +58,14 @@ export default function Vision() {
                         <div className="mx-auto max-w-lg lg:max-w-none">
                             <form onSubmit={submitContact} className="grid grid-cols-1 gap-y-6">
                                 <div>
-                                    <label htmlFor="company-name"
+                                    <label htmlFor="companyName"
                                            className="block text-sm font-medium text-gray-700 pb-2">
                                         My Company Name
                                     </label>
                                     <input
                                         type="text"
-                                        name="company-name"
-                                        id="company-name"
+                                        name="companyName"
+                                        id="companyName"
                                         autoComplete="name"
                                         className="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                         placeholder="My Company Name"
@@ -114,7 +116,7 @@ export default function Vision() {
                     </div>
                 </div>
             </main>
-            <VisionModal text={vision} open={visionModalOpen} setOpen={setVisionModalOpen}></VisionModal>
+            <VisionModal text={vision} initialPayload={initialPayload} open={visionModalOpen} setOpen={setVisionModalOpen}></VisionModal>
             <LoadingModal open={loadingModalOpen} setOpen={setLoadingModalOpen}></LoadingModal>
         </div>
     )
@@ -122,6 +124,7 @@ export default function Vision() {
 
 export interface OpenAiResponse {
     choices: OpenAiChoice[];
+    initialPayload: any;
 }
 
 export interface OpenAiChoice {

@@ -16,17 +16,17 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>
 ) {
-    const body = req.body;
+    const {job, industry, companyName, name, message} = req.body;
 
 
     const response = await openai.createCompletion({
         model: "text-davinci-002",
         prompt:
             `Please create me a sustainable vision for our future business in 2035 and explain me how to reach this goal, by using the following information as input:
-Our company name: ${body["company-name"]}
-Our industry: ${body.industry}
-What we currently do: ${body.job}
-What are our main challenges: ${body.message}
+Our company name: ${companyName}
+Our industry: ${industry}
+What we currently do: ${job}
+What are our main challenges: ${message}
 
 AI created vision for 2035 and the strategy to reach it:
 [insert]
@@ -38,5 +38,8 @@ AI created vision for 2035 and the strategy to reach it:
         presence_penalty: 0,
     });
 
-    res.status(200).json(response.data)
+    res.status(200).json({
+        ...response.data,
+        initialPayload: req.body
+    })
 }
