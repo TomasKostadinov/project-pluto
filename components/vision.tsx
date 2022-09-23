@@ -40,12 +40,13 @@ export default function Vision() {
 
     return (
         <div>
-            <main className="lg:flex">
+            <main className="lg:flex h-screen">
                 <div className="lg:w-1/2 relative">
                     <Image className="absolute inset-0 h-full w-full object-cover" src="/bg.jpg" layout="fill"></Image>
                 </div>
                 <div className="lg:w-1/2">
-                    <div className="mt-20 flex-grow lg:pl-10 text-center lg:text-left">
+                    <div className="mt-10 flex-grow lg:pl-10 text-center lg:text-left">
+                        <Image src="/vaerk.svg" width="100" height="80" className="w-32"></Image>
                         <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
                             Create your vision for 2035
                         </h2>
@@ -54,7 +55,7 @@ export default function Vision() {
                         </p>
                     </div>
 
-                    <div className="py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
+                    <div className="py-16 px-4 sm:px-6 lg:col-span-3 lg:py-12 lg:px-8 xl:pl-12">
                         <div className="mx-auto max-w-lg lg:max-w-none">
                             <form onSubmit={submitContact} className="grid grid-cols-1 gap-y-6">
                                 <div>
@@ -109,14 +110,27 @@ export default function Vision() {
                                     />
                                 </div>
                                 <div className="justify-self-end">
-                                    <Button type="submit" title="Get Vision"></Button>
+                                    <div className="flex space-x-8">
+                                        <a className="text-gray-800 py-2 underline cursor-pointer"
+                                           onClick={() => window.location.reload()}>Reset</a>
+                                        <Button type="submit" title="Get Vision"></Button>
+                                    </div>
+                                </div>
+                                <div className="flex justify-between w-full text-gray-400">
+                                    <div>
+                                        A project by vaerk & Tomas Kostadinov.
+                                    </div>
+                                    <div>
+                                        <a className="underline cursor-pointer" href="https://vaerk.digital/imprint/">Imprint</a>
+                                    </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </main>
-            <VisionModal text={vision} initialPayload={initialPayload} open={visionModalOpen} setOpen={setVisionModalOpen}></VisionModal>
+            <VisionModal text={vision} initialPayload={initialPayload} open={visionModalOpen}
+                         setOpen={setVisionModalOpen}></VisionModal>
             <LoadingModal open={loadingModalOpen} setOpen={setLoadingModalOpen}></LoadingModal>
         </div>
     )
