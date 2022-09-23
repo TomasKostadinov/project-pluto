@@ -82,7 +82,7 @@ export default function Vision() {
                                         name="industry"
                                         type="text"
                                         className="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                        placeholder="future research and consulting"
+                                        placeholder="Future research and consulting"
                                     />
                                 </div>
                                 <div>
@@ -94,7 +94,7 @@ export default function Vision() {
                                         name="job"
                                         id="job"
                                         className="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                        placeholder="Accompany organisations towards a sustainable future"
+                                        placeholder="Accompanying organizations towards a sustainable future"
                                     />
                                 </div>
                                 <div>
