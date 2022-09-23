@@ -10,7 +10,7 @@ const Home: NextPage = () => {
             <Head>
                 <title>Vaerk Project Pluto</title>
                 <meta name="description" content="AI created vision"/>
-                <link rel="icon" href="/vaerk.svg"/>
+                <link rel="icon" href="/x.svg"/>
             </Head>
             <main>
                 <Header></Header>
