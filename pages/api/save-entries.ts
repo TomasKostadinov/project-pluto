@@ -1,6 +1,6 @@
 import {createClient} from '@supabase/supabase-js'
 import {NextApiRequest, NextApiResponse} from "next";
-import {sendMail} from "../functions";
+import {sendMail} from "../../functions/functions";
 
 const supabase = createClient(
     'https://xpdxpfibddsikacymawq.supabase.co',
