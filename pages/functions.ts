@@ -17,11 +17,11 @@ export async function sendMail(email: string, vision: string) {
         .setReplyTo("hey@vaerk.digital")
         .setReplyToName("Vaerk")
         .setSubject("Your ai generated Vision is here!")
-        .setHtml("Thanks for visiting our ai rocket and launching your mission towards a sustainable 2035." +
-            "Your vision statement is:<br>" +
+        .setHtml("Thanks for visiting our ai rocket and launching your mission towards a sustainable 2035.<br><br>" +
+            "<b>Your vision statement is:</b><br>" +
             vision +
-            "<br>Curious about how to archive this vision or other rocket projects? " +
-            "Visit our <a href='https://vaerk.digital'>Website (https://vaerk.digital)</a>");
+            "<br><br><br>Curious about how to archive this vision or other rocket projects? " +
+            "<br>Visit our <a href='https://vaerk.digital'>Website (https://vaerk.digital)</a>");
 
     const mail = await mailersend.send(emailParams);
     console.log(mail);
