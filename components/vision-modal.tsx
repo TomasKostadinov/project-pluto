@@ -30,8 +30,8 @@ export default function VisionModal(props: { text: string, initialPayload: any, 
         } else {
             alert('Your data has been saved');
             props.setOpen(false);
-            window.location.reload();
         }
+        window.location.reload();
     };
 
     return (

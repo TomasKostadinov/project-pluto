@@ -3,12 +3,16 @@ import VisionModal from "./vision-modal";
 import {useState} from "react";
 import LoadingModal from "./loading-modal";
 import Image from "next/image";
+import { useRouter } from 'next/router'
 
 export default function Vision() {
     const [visionModalOpen, setVisionModalOpen] = useState<boolean>(false);
     const [loadingModalOpen, setLoadingModalOpen] = useState<boolean>(false);
     const [vision, setVision] = useState<string>("");
     const [initialPayload, setInitialPayload] = useState<{}>({});
+    const router = useRouter()
+    const {kiosk} = router.query
+    const kioskMode = !kiosk;
 
     const submitContact = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -110,11 +114,11 @@ export default function Vision() {
                                         defaultValue={''}
                                     />
                                 </div>
-                                <div className="justify-self-end">
+                                <div className="justify-self-start">
                                     <div className="flex space-x-8">
+                                        <Button type="submit" title="Get Vision"></Button>
                                         <a className="text-gray-800 py-2 underline cursor-pointer"
                                            onClick={() => window.location.reload()}>Reset</a>
-                                        <Button type="submit" title="Get Vision"></Button>
                                     </div>
                                 </div>
                                 <div className="flex justify-between w-full text-gray-400">
@@ -122,7 +126,11 @@ export default function Vision() {
                                         A project by vaerk & Tomas Kostadinov.
                                     </div>
                                     <div>
-                                        <a className="underline cursor-pointer" href="https://vaerk.digital/imprint/">Imprint</a>
+                                        {
+                                            kioskMode &&
+                                            <a className="underline cursor-pointer"
+                                               href="https://vaerk.digital/imprint/">Imprint</a>
+                                        }
                                     </div>
                                 </div>
                             </form>
