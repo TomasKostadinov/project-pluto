@@ -3,7 +3,7 @@ import VisionModal from "./vision-modal";
 import {useState} from "react";
 import LoadingModal from "./loading-modal";
 import Image from "next/image";
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 
 export default function Vision() {
     const [visionModalOpen, setVisionModalOpen] = useState<boolean>(false);
@@ -122,9 +122,14 @@ export default function Vision() {
                                     </div>
                                 </div>
                                 <div className="flex justify-between w-full text-gray-400">
-                                    <div>
-                                        A project by vaerk & Tomas Kostadinov.
-                                    </div>
+                                    {
+                                        !kioskMode
+                                            ? <span>A project by vaerk & Tomas Kostadinov.</span>
+                                            : <span>A project by <a className="underline cursor-pointer" target="_blank"
+                                                   href="https://vaerk.digital/" rel="noreferrer">vaerk</a> & <a className="underline cursor-pointer"
+                                                   href="https://tomaskostadinov.com/"  target="_blank" rel="noreferrer">Tomas Kostadinov.</a>
+                                            </span>
+                                    }
                                     <div>
                                         {
                                             kioskMode &&
